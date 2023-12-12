@@ -12,7 +12,7 @@ const PORT = process.env.PORT //3000
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-
+//define public folder
 app.use(express.static("public"))
 
 const frontend = process.env.FRONTEND;
