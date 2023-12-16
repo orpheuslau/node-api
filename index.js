@@ -54,5 +54,3 @@ connect(MONGO_URL)
     .catch((error)=>{
         console.log(error)
 })
-
-<meta name="google-site-verification" content="MtldDkb6boB8Px-s1H7V3abfY7fIOALD-g41UM4EkSk" />
