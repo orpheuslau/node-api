@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 //const Product = require('./models/productModel')
 
 const producRoute = require('./routes/productRoute');
+const userRoute = require('./routes/userRoute');
+
 const errorMiddleware = require('./middleware/errorMiddleware');
 //define express
 const app = express();
@@ -34,6 +36,9 @@ app.use(fileUpload());
 
 app.use('/api/products', producRoute);
 
+app.use('/api/users', userRoute);
+
+
 app.get('/', (req,res)=>{
     res.send('Hello NODE API')
 })
@@ -59,7 +64,7 @@ connect(MONGO_URL)
 
 
 //paste from server.js
-
+{/*
 const userSchema = new mongoose.Schema({
     username: String,
     password: String,
@@ -77,5 +82,5 @@ const userSchema = new mongoose.Schema({
     } else {
       res.json({ success: false });
     }
-  });
+  });*/}
   
