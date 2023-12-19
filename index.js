@@ -40,6 +40,8 @@ app.get('/', (req,res)=>{
 
 app.use(errorMiddleware);
 
+
+
 mongoose.set("strictQuery", false)
 mongoose.
 connect(MONGO_URL)
@@ -54,3 +56,26 @@ connect(MONGO_URL)
     .catch((error)=>{
         console.log(error)
 })
+
+
+//paste from server.js
+
+const userSchema = new mongoose.Schema({
+    username: String,
+    password: String,
+  });
+   
+  
+  const User = mongoose.model('User', userSchema);
+  
+  
+  app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username, password });
+    if (user) {
+      res.json({ success: true });
+    } else {
+      res.json({ success: false });
+    }
+  });
+  
