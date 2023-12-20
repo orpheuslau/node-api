@@ -1,6 +1,6 @@
 const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler')
-
+const bcrypt = require("bcryptjs")
 
 //get all user
 const getUsers = asyncHandler(async(req,res)=> {
@@ -17,12 +17,11 @@ const getUsers = asyncHandler(async(req,res)=> {
 //get user by ID
 const getUsersByID = asyncHandler(async(req,res)=>{
     try {
-        const {username, password} = req.body;
-        const Users = await User.findOne({username,password})
-        console.log(username)
+        const {id} = req.params;
+        const Users = await User.findById(id);
         if(!Users){
         res.status(404)
-            throw new Error(`cannot find this user with ID ${username}`);
+            throw new Error(`cannot find this user with ID ${id}`);
         }
         res.status(200).json(Users);
     } catch (error) {
@@ -35,12 +34,12 @@ const getUsersByID = asyncHandler(async(req,res)=>{
 const putUsersByID = asyncHandler(async(req,res)=>{
     try {
         const {id} = req.params;
-        const Users = await User.findByIDAndUpdate(id,req.body);
+        const Users = await User.findByIdAndUpdate(id,req.body);
         if(!Users){
             res.status(404);
             throw new Error(`cannot find this user with ID ${id}`);
         }
-        const updateduser = await User.findByID(id);
+        const updateduser = await User.findById(id);
         res.status(200).json(updateduser);
     } catch (error) {
         throw new Error(error.message);
@@ -52,7 +51,7 @@ const putUsersByID = asyncHandler(async(req,res)=>{
 const delUsersByID = asyncHandler(async(req,res)=>{
     try {
         const {id} = req.params;
-        const user = await User.findByIDAndDelete(id);
+        const user = await User.findByIdAndDelete(id);
         if(!user){
             res.status(404);
             throw new Error(`cannot find this user with ID ${id}`);
@@ -67,14 +66,32 @@ const delUsersByID = asyncHandler(async(req,res)=>{
 
 //create a new user
 const createUser = asyncHandler(async(req,res)=>{
-    try {
-        const user = await User.create(req.body)
-        res.status(200).json(user);
-        } catch (error) {
-            res.status(500);
-            throw new Error(error.message);
-    }
-})
+ 
+
+    const { username, password } = req.body
+    bcrypt.hash(password, 10).then(async (hash) => {
+        await User.create({
+          username,
+          password: hash,
+        })
+          .then((user) =>
+            res.status(200).json({
+              message: "User successfully created",
+               user,
+            })
+          )
+          .catch((error) =>
+            res.status(400).json({
+              message: "User not successful created",
+              error: error.message,
+            })
+          );
+      });
+    })
+
+
+
+
 
     module.exports = {
         getUsers,

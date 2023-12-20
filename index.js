@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const producRoute = require('./routes/productRoute');
 const userRoute = require('./routes/userRoute');
+const loginRoute = require('./routes/loginRoute');
 
 const errorMiddleware = require('./middleware/errorMiddleware');
 //define express
@@ -35,8 +36,8 @@ app.use(fileUpload());
 
 
 app.use('/api/products', producRoute);
-
 app.use('/api/users', userRoute);
+app.use('/api/login', loginRoute);
 
 
 app.get('/', (req,res)=>{
