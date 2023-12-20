@@ -17,11 +17,12 @@ const getUsers = asyncHandler(async(req,res)=> {
 //get user by ID
 const getUsersByID = asyncHandler(async(req,res)=>{
     try {
-        const {id} = req.params;
-        const Users = await User.findById(id);
+        const {username, password} = req.body;
+        const Users = await User.findOne({username,password})
+        console.log(username)
         if(!Users){
         res.status(404)
-            throw new Error(`cannot find this user with ID ${id}`);
+            throw new Error(`cannot find this user with ID ${username}`);
         }
         res.status(200).json(Users);
     } catch (error) {
@@ -34,12 +35,12 @@ const getUsersByID = asyncHandler(async(req,res)=>{
 const putUsersByID = asyncHandler(async(req,res)=>{
     try {
         const {id} = req.params;
-        const Users = await User.findByIdAndUpdate(id,req.body);
+        const Users = await User.findByIDAndUpdate(id,req.body);
         if(!Users){
             res.status(404);
             throw new Error(`cannot find this user with ID ${id}`);
         }
-        const updateduser = await User.findById(id);
+        const updateduser = await User.findByID(id);
         res.status(200).json(updateduser);
     } catch (error) {
         throw new Error(error.message);
@@ -51,7 +52,7 @@ const putUsersByID = asyncHandler(async(req,res)=>{
 const delUsersByID = asyncHandler(async(req,res)=>{
     try {
         const {id} = req.params;
-        const user = await User.findByIdAndDelete(id);
+        const user = await User.findByIDAndDelete(id);
         if(!user){
             res.status(404);
             throw new Error(`cannot find this user with ID ${id}`);
