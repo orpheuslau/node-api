@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/cookieJwtAuth')
 
 const Product = require('../models/productModel')
 const {getProducts, getProductsByID, putProductsByID, delProductsByID, createProduct} = require('../controllers/productController')

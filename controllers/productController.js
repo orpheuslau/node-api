@@ -1,5 +1,6 @@
 const Product = require('../models/productModel');
 const asyncHandler = require('express-async-handler')
+const auth = require('../middleware/cookieJwtAuth')
 
 
 const { cookieJwtAuth } = require("../middleware/cookieJwtAuth");

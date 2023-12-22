@@ -8,6 +8,8 @@ const userRoute = require('./routes/userRoute');
 const loginRoute = require('./routes/loginRoute');
 
 const errorMiddleware = require('./middleware/errorMiddleware');
+const authMiddleware = require('./middleware/cookieJwtAuth');                        
+
 //define express
 const app = express();
 const MONGO_URL = process.env.MONGO_URL;
@@ -40,11 +42,12 @@ app.use('/api/users', userRoute);
 app.use('/api/login', loginRoute);
 
 
-app.get('/', (req,res)=>{
+app.get('/pos',authMiddleware, (req,res)=>{
     res.send('Hello NODE API')
 })
 
 app.use(errorMiddleware);
+//app.use(authMiddleware);
 
 
 
