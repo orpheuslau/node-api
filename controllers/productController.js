@@ -2,6 +2,9 @@ const Product = require('../models/productModel');
 const asyncHandler = require('express-async-handler')
 
 
+const { cookieJwtAuth } = require("../middleware/cookieJwtAuth");
+
+
 //get all product
 const getProducts = asyncHandler(async(req,res)=> {
     try {
@@ -82,3 +85,9 @@ const createProduct = asyncHandler(async(req,res)=>{
         delProductsByID,
         createProduct
     }
+
+    module.exports = (app) =>
+  app.post("/add", cookieJwtAuth, (req, res) => {
+    console.log(req.user);
+    res.redirect("/home");
+  });
