@@ -83,11 +83,7 @@ const createProduct = asyncHandler(async(req,res)=>{
         getProductsByID,
         putProductsByID,
         delProductsByID,
-        createProduct
+        createProduct,
+
     }
 
-    module.exports = (app) =>
-  app.post("/add", cookieJwtAuth, (req, res) => {
-    console.log(req.user);
-    res.redirect("/home");
-  });
