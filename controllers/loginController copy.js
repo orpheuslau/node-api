@@ -56,7 +56,7 @@ exports.checkUser = asyncHandler(async(req,res)=>{
               jwt.sign({user}, 'privatekey', { expiresIn: '1h' },(err, token) => {
                 if(err) { console.log(err) }    
                res.status(200).json({message: "Login success", token: token})
-               //localStorage.setItem("token", response.data.token);
+               localStorage.setItem("token", response.data.token);
                // console.log(user.username)
             });
 
