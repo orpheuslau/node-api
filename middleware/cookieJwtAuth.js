@@ -3,17 +3,13 @@ const jwt = require("jsonwebtoken");
 const cookieJwtAuth = (req, res, next) => {
   
   try {
-    console.log("before token");
-    console.log(req.cookies);
-    const token = req.cookies.token;
-    console.log(token);
-    const user = jwt.verify(token, process.env.jwtS);
-    req.user = user;
+    const token = req.cookies.jwt;
+    const user = jwt.verify(token, process.env.jwtS); 
     next();
   } catch (err) {
-    res.clearCookie("token");
-    return res.redirect("/login");
-  }
+        res.status(403).json({ error: "Forbidden access" });
+      }
 }
+
 
 module.exports = cookieJwtAuth;

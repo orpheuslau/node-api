@@ -27,12 +27,11 @@ const checkUser = asyncHandler(async (req, res) => {
       bcrypt.compare(password, user.password).then(function (result) {
         if (result) {
           const jwt = require('jsonwebtoken');
-          jwt.sign({ user }, process.env.jwtS, { expiresIn: '1h' }, (err, token) => {
+          jwt.sign({ username }, process.env.jwtS, { expiresIn: '1h' }, (err, token) => {
             console.log(token);
-            res.status(200).json({ message: "Login success", token: token });
             res.cookie("jwt", token, { httpOnly: true, maxAge: 1000 * 60 * 60 })
-
-          });
+            res.status(200).json({ message: "Login success" });
+                      });
         }
         else res.status(400).json({ message: "Login not succesful" })
       })

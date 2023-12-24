@@ -8,7 +8,9 @@ const userRoute = require('./routes/userRoute');
 const loginRoute = require('./routes/loginRoute');
 
 const errorMiddleware = require('./middleware/errorMiddleware');
-const authMiddleware = require('./middleware/cookieJwtAuth');                        
+const authMiddleware = require('./middleware/cookieJwtAuth');          
+const cookieParser = require("cookie-parser");
+              
 
 //define express
 const app = express();
@@ -23,6 +25,7 @@ app.use(express.static("public"))
 const frontend = process.env.FRONTEND;
 var corsOptions = {
     origin: frontend,
+    Credentials: true,
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
@@ -31,7 +34,9 @@ app.use(cors(corsOptions));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(cookieParser());
+
 
 const fileUpload = require("express-fileupload");
 app.use(fileUpload());
@@ -42,9 +47,9 @@ app.use('/api/users', userRoute);
 app.use('/api/login', loginRoute);
 
 
-app.get('/pos',authMiddleware, (req,res)=>{
+/*app.get('/pos',authMiddleware, (req,res)=>{
     res.send('Hello NODE API')
-})
+})*/
 
 app.use(errorMiddleware);
 //app.use(authMiddleware);
