@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs")
 //check username and password
 const checkUser = asyncHandler(async (req, res) => {
 
-  const { username, password } = req.body
+  const { username, password} = req.body
 
   // Check if username and password is provided
   if (!username || !password) {
