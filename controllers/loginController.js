@@ -2,10 +2,25 @@ const User = require('../models/userModel');
 const asyncHandler = require('express-async-handler')
 const bcrypt = require("bcryptjs")
 
+
+const logout = asyncHandler(async (req, res) => {
+
+  try {
+    //const Users = await User.find({});
+    res.cookie("jwt", "", { maxAge: "1" })
+    res.status(200).json({ message: "Logout ok" });
+  }
+  catch (err) {
+    console.log(err)
+    res.status(404).json({ message: "Logout NOT ok" })
+  }
+
+})
+
 //check username and password
 const checkUser = asyncHandler(async (req, res) => {
 
-  const { username, password} = req.body
+  const { username, password } = req.body
 
   // Check if username and password is provided
   if (!username || !password) {
@@ -29,9 +44,9 @@ const checkUser = asyncHandler(async (req, res) => {
           const jwt = require('jsonwebtoken');
           jwt.sign({ username: username }, process.env.jwtS, { expiresIn: '1h' }, (err, token) => {
             res.cookie("jwt", token, { httpOnly: true, maxAge: 1000 * 60 * 60 });
-          // localStorage.setItem('token', token);
-                        res.status(200).json({ message: "Login success", username: username });
-                      });
+            // localStorage.setItem('token', token);
+            res.status(200).json({ message: "Login success", username: username });
+          });
         }
         else res.status(400).json({ message: "Login not succesful" })
       })
@@ -45,7 +60,7 @@ const checkUser = asyncHandler(async (req, res) => {
   }
 })
 
-module.exports = { checkUser }
+module.exports = { checkUser, logout }
 
 
 

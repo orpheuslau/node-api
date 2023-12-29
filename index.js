@@ -47,6 +47,7 @@ app.use('/api/users', userRoute);
 app.use('/api/login', loginRoute);
 
 
+
 /*app.get('/pos',authMiddleware, (req,res)=>{
     res.send('Hello NODE API')
 })*/
