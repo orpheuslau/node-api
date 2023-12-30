@@ -10,6 +10,14 @@ const studentSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        parrentname: {
+            type: String,
+            required: true,
+        },
+        classno: {
+            type: Number,
+            required: false,
+        },
         contact: {
             type: Number,
             required: false,
