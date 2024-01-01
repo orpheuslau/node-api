@@ -12,7 +12,7 @@ const studentSchema = mongoose.Schema(
         },
         parentname: {
             type: String,
-            required: true,
+            required: false,
         },
         classno: {
             type: Number,
