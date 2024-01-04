@@ -7,6 +7,7 @@ const producRoute = require('./routes/productRoute');
 const userRoute = require('./routes/userRoute');
 const loginRoute = require('./routes/loginRoute');
 const studentRoute = require('./routes/studentRoute');
+const assessRoute = require('./routes/assessRoute');
 
 const errorMiddleware = require('./middleware/errorMiddleware');
 const authMiddleware = require('./middleware/cookieJwtAuth');          
@@ -47,6 +48,7 @@ app.use('/api/products', producRoute);
 app.use('/api/users', userRoute);
 app.use('/api/login', loginRoute);
 app.use('/api/students', studentRoute);
+app.use('/api/assesss', assessRoute);
 
 
 
