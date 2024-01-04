@@ -66,12 +66,12 @@ const delUsersByID = asyncHandler(async(req,res)=>{
 
 //create a new user
 const createUser = asyncHandler(async(req,res)=>{
-     const { username, password, classid} = req.body
+     const { username, password, classid, name} = req.body
     bcrypt.hash(password, 10).then(async (hash) => {
         await User.create({
           username,
           password: hash,
-          classid
+          classid, name
         })
           .then((user) =>
             res.status(200).json({

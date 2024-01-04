@@ -45,7 +45,7 @@ const checkUser = asyncHandler(async (req, res) => {
           jwt.sign({ username: username }, process.env.jwtS, { expiresIn: '1h' }, (err, token) => {
             res.cookie("jwt", token, { httpOnly: true, maxAge: 1000 * 60 * 60 });
             // localStorage.setItem('token', token);
-            res.status(200).json({ message: "Login success", username: username });
+            res.status(200).json({ message: "Login success", name: user.name });
           });
         }
         else res.status(400).json({ message: "Login not succesful" })
