@@ -7,7 +7,7 @@ const {getAssesss, getAssesssByID, putAssesssByID, delAssesssByID, createAssess}
 
 router.get('', auth, getAssesss);
 
-router.get('/:id', getAssesssByID);
+router.post('', getAssesssByID);
    
     //update a Student
 router.put('/:id', putAssesssByID);
@@ -16,6 +16,6 @@ router.put('/:id', putAssesssByID);
 router.delete('/:id', delAssesssByID)
 
 //create student
-router.post('',createAssess);
+//router.post('',createAssess);
     
 module.exports = router

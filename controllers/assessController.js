@@ -23,12 +23,14 @@ const getAssesss = asyncHandler(async (req, res) => {
 
 //get Assesss by ID
 const getAssesssByID = asyncHandler(async (req, res) => {
+    const { studentid } = req.body;
+    console.log(studentid )
     try {
-        const { id } = req.params;
-        const Assesss = await Assess.findById(id);
+        
+        const Assesss = await Assess.findOne({ studentid: studentid });
         if (!Assesss) {
             res.status(404)
-            throw new Error(`cannot find this Assesss with ID ${id}`);
+            throw new Error(`cannot find this Assesss with std ID ${studentid}`);
         }
         res.status(200).json(Assesss);
     } catch (error) {
@@ -81,6 +83,8 @@ const createAssess = asyncHandler(async (req, res) => {
         throw new Error(error.message);
     }
 })
+
+
 
 module.exports = {
     getAssesss,
