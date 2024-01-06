@@ -99,12 +99,17 @@ const assessSchema = mongoose.Schema(
         },
                 
         vfeature: {type: Array, "default" : []},
-  
-            
+      
         
+        testimonial:{
+            type: String,
+            required: false,
+        },
         
-        testimonia:{type: String,
-            required: false,}       
+        suppInfo:{
+            type: String,
+            required: false,
+        }
     },
     {
         timestamps: true
