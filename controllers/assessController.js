@@ -24,7 +24,6 @@ const getAssesss = asyncHandler(async (req, res) => {
 //get Assesss by ID
 const getAssesssByID = asyncHandler(async (req, res) => {
     const { studentid } = req.body;
-    console.log(studentid )
     try {
         
         const Assesss = await Assess.findOne({ studentid: studentid });
