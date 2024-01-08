@@ -12,12 +12,17 @@ const userSchema = mongoose.Schema(
         },
         classid: {
             type: String,
-            required: true,
+            required: false,
         },
         name: {
             type: String,
             required: true,
         },
+        role: {
+            type: String,
+            required: true,
+        },
+
 
 
     },

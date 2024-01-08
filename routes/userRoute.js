@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/cookieJwtAuth')
 
 const User = require('../models/userModel')
 const {getUsers, getUsersByID, putUsersByID, delUsersByID, createUser} = require('../controllers/userController')
 
-router.get('', getUsers);
+router.get('', auth, getUsers);
 
 router.get('/:id', getUsersByID);
    
