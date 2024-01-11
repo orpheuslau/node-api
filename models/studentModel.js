@@ -26,6 +26,10 @@ const studentSchema = mongoose.Schema(
             type: String,
             required: false,
         },
+        sex: {
+            type: String,
+            required: false,
+        },
         image: {
             type: String,
             required: false,
