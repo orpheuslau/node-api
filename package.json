@@ -1,5 +1,4 @@
 {
-  "home": "https://orpheuslau.github.io/node-api/",
   "name": "backend",
   "version": "1.0.0",
   "description": "",
@@ -8,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node index.js",
     "dev": "nodemon index.js",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build"
   },
   "keywords": [],
@@ -27,7 +25,8 @@
     "gh-pages": "^6.1.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
-    "node-localstorage": "^3.0.5"
+    "node-localstorage": "^3.0.5",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
