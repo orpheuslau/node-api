@@ -51,6 +51,7 @@ app.use('/api/login', loginRoute);
 app.use('/api/students', studentRoute);
 app.use('/api/assesss', assessRoute);
 app.use('/api/roles', roleRoute);
+pp.set("trust proxy", 1)
 
 
 
