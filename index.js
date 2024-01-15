@@ -26,11 +26,23 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.static("public"))
 
 const frontend = process.env.FRONTEND;
-var corsOptions = {
+/*var corsOptions = {
     origin: frontend,
     Credentials: true,
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
+
+  for testingg purpose only.
+  */ 
+
+  var corsOptions = {
+    origin: "*",
+    method: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    Credentials: true,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
+
 
 var cors = require("cors");
 app.use(cors(corsOptions));
