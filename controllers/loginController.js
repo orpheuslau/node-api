@@ -43,7 +43,7 @@ const checkUser = asyncHandler(async (req, res) => {
         if (result) {
           const jwt = require('jsonwebtoken');
           jwt.sign({ username: username, role: user.role }, process.env.jwtS, { expiresIn: '1h' }, (err, token) => {
-            res.cookie("jwt", token, { httpOnly: true, maxAge: 1000 * 60 * 60 });
+            res.cookie("jwt", token, { httpOnly: true, maxAge: 1000 * 60 * 60, secure: true });
             // localStorage.setItem('token', token);
             res.status(200).json({ message: "Login success", name: user.name, role: user.role });
           });
