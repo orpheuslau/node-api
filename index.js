@@ -39,7 +39,7 @@ const frontend = process.env.FRONTEND;
     origin: "*",
     method: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
-    creredentials: true,
+    credentials: true,
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
