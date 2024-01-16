@@ -36,9 +36,9 @@ const frontend = process.env.FRONTEND;
   */ 
 
   var corsOptions = {
-    origin: "*",
+    origin: "https://front.orpheuslau.dev",
     method: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
+    preflightContinue: true,
     credentials: true,
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
