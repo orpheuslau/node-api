@@ -5,7 +5,8 @@ const auth = require('../middleware/cookieJwtAuth')
 const Product = require('../models/productModel')
 const {getProducts, getProductsByID, putProductsByID, delProductsByID, createProduct} = require('../controllers/productController')
 
-router.get('', auth, getProducts);
+//router.get('', auth, getProducts);
+router.get('', getProducts);
 
 router.get('/:id', getProductsByID);
    

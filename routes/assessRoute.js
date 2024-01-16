@@ -5,7 +5,8 @@ const auth = require('../middleware/cookieJwtAuth')
 const Assess = require('../models/assessModel')
 const {getAssesss, getAssesssByID, putAssesssByID, delAssesssByID, createAssess} = require('../controllers/assessController')
 
-router.get('', auth, getAssesss);
+//router.get('', auth, getAssesss);
+router.get('', getAssesss);
 
 //router.post('', getAssesssByID);
    
