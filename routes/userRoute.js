@@ -5,8 +5,8 @@ const auth = require('../middleware/cookieJwtAuth')
 const User = require('../models/userModel')
 const {getUsers, getUsersByID, putUsersByID, delUsersByID, createUser} = require('../controllers/userController')
 
-//router.get('', auth, getUsers);
-router.get('', getUsers);
+router.get('', auth, getUsers);
+//router.get('', getUsers);
 
 router.get('/:id', getUsersByID);
    
