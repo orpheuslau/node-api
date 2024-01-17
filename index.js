@@ -36,7 +36,7 @@ const frontend = process.env.FRONTEND;
   */ 
 
   var corsOptions = {
-    origin: ["https://front.orpheuslau.dev","localhost:3000"],
+    origin: ["https://front.orpheuslau.dev","http://localhost:3000/","http://localhost:3000"],
     method: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: true,
     credentials: true,
