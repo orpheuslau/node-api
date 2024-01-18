@@ -6,8 +6,8 @@ const bcrypt = require("bcryptjs")
 const logout = asyncHandler(async (req, res) => {
   try {
     //const Users = await User.find({});
-    //res.cookie("jwt", "", { httpOnly: true, maxAge: "1", secure: true, sameSite: 'none' });
-    res.clearCookie("jwt");
+    res.cookie("jwt", "", { httpOnly: true, maxAge: "1", secure: true, sameSite: 'none' });
+    //res.clearCookie("jwt");
     res.status(200).json({ message: "Logout ok" });
   }
   catch (err) {
